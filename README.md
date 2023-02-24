@@ -1,38 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pokedex App
+
+This is a simple app that uses the [PokeAPI](https://pokeapi.co/) to display a list of Pokemon and their details.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repo
+2. Run `npm install` to install dependencies
+3. Run `npm start` to start the app
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### Testing
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Run `npm test` to run the tests
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Deployment
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Run `npm run build` to build the app for production to the `build` folder.
+2. Run `npm install -g serve` to install the serve package globally.
+3. Run `serve -s build` to serve the production build.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## API
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The app uses the [PokeAPI](https://pokeapi.co/) to fetch Pokemon data.
 
-## Learn More
+The API is a RESTful API that returns JSON data.
 
-To learn more about Next.js, take a look at the following resources:
+### Endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Pokemon](https://pokeapi.co/docs/v2#pokemon)
+- [Pokemon Species](https://pokeapi.co/docs/v2#pokemon-species)
+- [Pokemon Types](https://pokeapi.co/docs/v2#types)
+- [Pokemon Abilities](https://pokeapi.co/docs/v2#abilities)
+- [Pokemon Moves](https://pokeapi.co/docs/v2#moves)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Data
 
-## Deploy on Vercel
+The data returned from the API is used to display the Pokemon's name, image, type, abilities, moves, and stats.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Pagination
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The API returns a list of Pokemon, but only 20 at a time. To get the next 20, you need to pass in an offset parameter. The app uses this to paginate the list of Pokemon.
+
+### Caching
+
+The app uses [React Query](https://react-query.tanstack.com/) to cache the data returned from the API. This means that when you navigate to a Pokemon's details page, the data is already in the cache and doesn't need to be fetched again.
+
+## Built With
+
+- [Next](https://nextjs.org/) - React framework
+- [Typescript](https://www.typescriptlang.org/) - Type checking
+- [Tailwind](https://tailwindcss.com/) - CSS framework
+- [PokeAPI](https://pokeapi.co/) - Pokemon API
+- [React Query](https://react-query.tanstack.com/) - Data fetching
+- [Jest](https://jestjs.io/) - Testing
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - Testing
+- [Cypress](https://www.cypress.io/) - E2E testing
+
+## Author
+
+- **[Emilia Williamson](https://github.com/emiliawil)**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
